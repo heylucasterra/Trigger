@@ -24,6 +24,7 @@
 	"dependencies": {
 		"bourbon": "4.0",
 		"neat": "1.6",
+		"jquery": "1.11.0",
 		"jquery-placeholder": "2.0.8",
 		"jquery.debouncedresize": "~1"
 	}

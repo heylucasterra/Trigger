@@ -11,14 +11,15 @@ module.exports = function(grunt) {
 			},
 			dist: {
 				src: [
-					
-					'assets/development/js/libs/*.js',
+					'assets/bower-components/jquery/*',
 				
 					'assets/bower-components/**/*.js',
 					
 					'!assets/bower-components/**/*min.js',
 					'!assets/bower-components/**/test*.js',
-					'!assets/bower-components/**/*test.js',
+					'!assets/bower-components/**/*test*.js',
+					'!assets/bower-components/*jquery/*.js',
+					'!assets/bower-components/jquery*/*.js',
 					
 					'assets/development/js/plugins/*.js',
 					'assets/development/js/scripts.js'
