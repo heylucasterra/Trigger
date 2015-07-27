@@ -6,12 +6,10 @@
 .sass-cache/*
 
 
-
 # DS Store #
 ############
 
 .DS_Store
-
 
 
 # Node Modules #
@@ -20,8 +18,11 @@
 node_modules/*
 
 
-
 # Bower Components #
 ####################
 
 src/libs/*
+
+# Complied Source #
+###################
+dist/*
