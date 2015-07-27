@@ -24,4 +24,4 @@ node_modules/*
 # Bower Components #
 ####################
 
-bower_components/*
+src/libs/*
