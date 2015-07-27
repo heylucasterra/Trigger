@@ -1,0 +1,29 @@
+{
+  "name": "Trigger",
+  "version": "0.0.1",
+  "homepage": "https://github.com/rmccawl/Trigger",
+  "authors": [
+    "John Devlin, Rory McCawl"
+  ],
+  "description": "A wee frontend framework mate",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bourbon": "~4.2.3",
+    "neat": "~1.7.2",
+    "jquery": "~2.1.4",
+    "normalize.css": "~3.0.3",
+    "modernizer": "~2.8.2",
+    "jquery.placeholder": "~0.2.4",
+    "jquery.validate": "~1.13.0",
+    "jquery.debouncedresize": "~1.0.1",
+    "jquery-placeholder": "~2.1.2",
+    "selectivizr": "~1.0.2"
+  }
+}

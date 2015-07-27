@@ -3,6 +3,14 @@ module.exports = function(grunt) {
 	// 1. All configuration goes here 
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
+
+        // Re-usable filesystem paths (these shouldn't be modified)
+        paths: {
+          src:        'src',
+          src_img:    'src/img',
+          dist:       'dist',
+          dist_img:   'dist/img'
+        },
 		
 		concat: {   
 			options: {
@@ -11,21 +19,19 @@ module.exports = function(grunt) {
 			},
 			dist: {
 				src: [
-					'development/js/libs/*.js',
-					'development/js/plugins/*.js',
-					'development/js/framework/*.js',
-					'development/js/scripts.js'
+					'<%= paths.src %>/libs/**/*.js',
+					'<%= paths.src %>/js/*.js'
 				],
-				dest: 'js/production.js',
+				dest: '<%= paths.dist %>/js/production.js',
 			}
 		},
 		
-		uglify: {
-			build: {
-				src: 'js/production.js',
-				dest: 'js/production.min.js'
-			}
-		},
+		// uglify: {
+		// 	build: {
+		// 		src: '<%= paths.dist %>/js/production.js',
+		// 		dest: '<%= paths.dist %>/js/production.min.js'
+		// 	}
+		// },
 
 		sass: {
 			dist: {
@@ -33,21 +39,21 @@ module.exports = function(grunt) {
 					style: 'compressed'
 				},
 				files: {
-					'css/style.css': 'development/css/base.scss'
+					'<%= paths.dist %>/css/style.css': '<%= paths.src %>/css/base.scss'
 				}
 			} 
 		},
 		
 		watch: {
 			scripts: {
-				files: ['development/js/*.js'],
+				files: ['<%= paths.src %>/js/*.js'],
 				tasks: ['concat', 'uglify'],
 				options: {
 					spawn: false,
 				},
 			},
 			css: {
-				files: ['development/css/**/*.scss'],
+				files: ['<%= paths.src %>/css/**/*.scss'],
 				tasks: ['sass'],
 				options: {
 					spawn: false,
@@ -66,9 +72,9 @@ module.exports = function(grunt) {
 			dynamic: {
 				files: [{
 					expand: true,
-					cwd: 'development/img/',
+					cwd: '<%= paths.src_img %>/',
 					src: ['**/*.{png,jpg,gif}'],
-					dest: 'img/'
+					dest: '<%= paths.dist_img %>/'
 				}]
 			}
 		},
@@ -92,7 +98,7 @@ module.exports = function(grunt) {
 		jshint: {
 			all: [
 				'Gruntfile.js', 
-				'development/js/*.js'
+				'<%= paths.src %>/js/*.js'
 			]
 		},
 		
@@ -113,7 +119,8 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-clean');
 
 	// 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
-	grunt.registerTask('default', ['concat', 'uglify', 'sass', 'watch']);
+	// grunt.registerTask('default', ['concat', 'uglify', 'sass', 'watch']);
+	grunt.registerTask('default', ['concat', 'sass', 'watch']);
 	
 	grunt.registerTask('debug', ['htmlhint', 'jshint']);
 	
